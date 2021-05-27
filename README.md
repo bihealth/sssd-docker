@@ -10,18 +10,8 @@ This is a Docker image from CUBI @bihealth that we use for our iRODS deployment.
 ## Building
 
 ```bash
-$ cd docker
-$ docker build . -t ghcr.io/bihealth/sssd-docker:latest
+$ bash build.sh
 ```
-
-122   sssd:
-123     build:
-124       context: ./sssd
-125     image: bihealth/sssd
-126     restart: unless-stopped
-127     volumes:
-128       - "./config/sssd/sssd.conf:/etc/sssd.in/sssd.conf:ro"
-129       - "./volumes/sss:/var/lib/sss:rw"
 
 ## Data Persistency
 
