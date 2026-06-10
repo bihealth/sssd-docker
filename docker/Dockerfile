@@ -1,21 +1,22 @@
-# Build container running sssd on CentOS 7.
-FROM centos:7
+# Build container running sssd on Debian.
+FROM debian:bookworm
 
 LABEL org.opencontainers.image.source https://github.com/bihealth/sssd-docker
 
-# Cleanup software package and install latest updates.
-RUN yum clean all && \
-    yum upgrade -y
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Install SSSD.
-RUN yum install -y \
+# Install system packages.
+RUN apt-get update && \
+    apt-get install -y \
         sssd \
         sssd-ldap \
         sssd-tools
 
+# Set the working directory.
+WORKDIR /usr/local/bin
+
 # Define the entry point.
 COPY docker-entrypoint.sh /usr/local/bin
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh && \
-    ln -s /usr/local/bin/docker-entrypoint.sh / # backwards compat
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["sssd"]

@@ -13,6 +13,19 @@ This is a Docker image from CUBI @bihealth that we use for our iRODS deployment.
 $ bash build.sh
 ```
 
+## Running
+
+Edit the file `config/sssd/sssd.conf.example`, then run the container with bind-mounts for the SSSD configuration file and LDAP TLS certificates (if needed).
+The command may look similar to this:
+
+```bash
+docker run --rm \
+  -v ./config/sssd/sssd.conf.example:/etc/sssd/sssd.conf \
+  -v ./path/to/ldap/cert.pem:/etc/ssl/certs/ldap_cert_1.pem \
+  -v ./path/to/ldap/cert.pem:/etc/ssl/certs/ldap_cert_1.pem \
+  -it ghcr.io/bihealth/sssd-docker:latest
+```
+
 ## Data Persistency
 
 Each container exposes volumes for data persistency.
