@@ -15,6 +15,7 @@ offline_credentials_expiration = 3
 id_provider = ldap
 auth_provider = ldap
 access_provider = ldap
+sudo_provider = none
 
 ldap_uri = ldaps://ldap.example1.com:636
 ldap_id_use_start_tls = false
@@ -47,6 +48,7 @@ debug_level = 1
 id_provider = ldap
 auth_provider = ldap
 access_provider = ldap
+sudo_provider = none
 
 ldap_uri = ldap://ldap.example2.com:3268
 ldap_id_use_start_tls = true
