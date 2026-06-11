@@ -1,0 +1,76 @@
+[sssd]
+
+config_file_version = 2
+domains = DOMAIN1, DOMAIN2
+services = nss, pam
+
+
+[pam]
+
+offline_credentials_expiration = 3
+
+
+[domain/DOMAIN1]
+
+id_provider = ldap
+auth_provider = ldap
+access_provider = ldap
+sudo_provider = none
+
+ldap_uri = ldaps://ldap.example1.com:636
+ldap_id_use_start_tls = false
+ldap_tls_reqcert = demand
+ldap_tls_cacert = /path/to/my/cert1.pem
+ldap_search_base = MY_SEARCH_BASE_1
+ldap_default_bind_dn = MY_BIND_DN_1
+ldap_default_authtok = MY_LDAP_PASSWORD_1
+ldap_default_authtok_type = password
+ldap_access_filter = objectClass=person
+ldap_schema = ad
+ldap_user_objectsid = objectSid
+ldap_user_object_class = person
+ldap_user_name = sAMAccountName
+ldap_user_fullname = displayName
+ldap_id_mapping = true
+
+cache_credentials = true
+account_cache_expiration = 7
+entry_cache_timeout = 14400
+
+use_fully_qualified_names = true
+ignore_group_members = true
+
+debug_level = 1
+
+
+[domain/DOMAIN2]
+
+id_provider = ldap
+auth_provider = ldap
+access_provider = ldap
+sudo_provider = none
+
+ldap_uri = ldap://ldap.example2.com:3268
+ldap_id_use_start_tls = true
+ldap_tls_reqcert = demand
+ldap_tls_cacert = /path/to/my/cert2.pem
+ldap_search_base = MY_SEARCH_BASE_2
+ldap_default_bind_dn = MY_BIND_DN_2
+ldap_default_authtok = MY_LDAP_PASSWORD_2
+ldap_default_authtok_type = password
+ldap_access_filter = objectClass=person
+ldap_schema = ad
+ldap_user_objectsid = objectSid
+ldap_user_object_class = person
+ldap_user_name = sAMAccountName
+ldap_user_fullname = displayName
+ldap_id_mapping = true
+
+cache_credentials = true
+account_cache_expiration = 7
+entry_cache_timeout = 14400
+
+use_fully_qualified_names = true
+ignore_group_members = true
+
+debug_level = 1
