@@ -22,7 +22,7 @@ The command may look similar to this:
 docker run --rm \
   -v ./config/sssd/sssd.conf.example:/etc/sssd/sssd.conf \
   -v ./path/to/ldap/cert.pem:/etc/ssl/certs/ldap_cert_1.pem \
-  -v ./path/to/ldap/cert.pem:/etc/ssl/certs/ldap_cert_1.pem \
+  -v ./path/to/ldap/cert.pem:/etc/ssl/certs/ldap_cert_2.pem \
   -it ghcr.io/bihealth/sssd-docker:latest
 ```
 
